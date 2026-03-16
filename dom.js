@@ -6,6 +6,4 @@ function result(){
     displayHeading.style.color="red";
     // change color of body element
     document.getElementsByTagName("body")[0].style.backgroundColor="yellow";
-
-
 }
