@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Function in js</title>
 </head>
 <body>
@@ -59,6 +59,73 @@
             console.log("Hello frnd");
         }
         setTimeout(msg1,2000); // msg1 will be called after 2 seconds
+        //IIFE (Immediately Invoked Function Expression): An IIFE is a function that is defined and immediately executed. It is often used to create a new scope and avoid polluting the global namespace.
+        (function(a,b){
+            console.log(`First parameter ${a} and 
+            second parameter ${b}`);
+            var res=a+b;
+            console.log(`Result is ${res}`);
+
+        })(4,5);
+        //short code using arrow function
+        (msg=>console.log("Hello IIFE"))();
+        //PROMISES: A promise is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. It allows you to handle asynchronous operations in a more structured way, avoiding callback hell and improving code readability.
+        let promise=new Promise(function(resolve,reject){
+            let age=17;
+            if(age>=18){
+                resolve("valid age");
+            }
+            else{
+                reject("wait for next year");
+            }
+        });
+        //console.log(promise);
+        promise.then(msg=>console.log(msg)).catch(error=>console.log(error));
+        //async await: The async/await syntax is a more modern way to handle asynchronous operations in JavaScript. It allows you to write asynchronous code that looks and behaves like synchronous code, making it easier to read and understand.
+        //an async function is defined using the "async" keyword and can contain "await" expressions, which pause the execution of the function until a promise is resolved or rejected.
+        //https://dummyhson.com/products
+        //fetch api using async await
+        async function userData(){
+            let response=await fetch('https://dummyjson.com/products');
+            let responseData=await response.json();
+            console.log(responseData);
+            console.log(response);
+            //document.writeln(responseData.id);
+
+        }
+        userData();
+        //error handling using try catch
+        //local storage: Local storage is a web storage mechanism that allows you to store key-value pairs in the browser. It provides a way to persist data on the client-side, even after the browser is closed. Local storage is accessible through the "localStorage" object in JavaScript and has a larger storage capacity compared to cookies.
+        let userinfo={
+            name:"John Doe",
+            age:30,
+            mob:554466447788,
+            eMail:"john234@gmail.com"
+        }
+        //convert the object into JASON string
+        let myinfoData=JSON.stringify(userinfo);
+        //set data
+        localStorage.setItem('prefrence',myinfoData);
+        //Retreving and prasing the object back
+        let getmyinfo=localStorage.getItem('prefrence');
+        const finalData=JSON.parse(getmyinfo);
+        console.log(finalData.name);
+        //map function: The map() function is a built-in method in JavaScript that allows you to create a new array by applying a provided function to each element of an existing array. It takes a callback function as an argument and returns a new array with the results of calling the callback function on each element of the original array.
+        let num=[1,2,3,4,5,6,7,8,9,0];
+        //square of num
+        let result=num.map(x=>x*x);
+        console.log(result);
+        //find the number greater than 3
+        let result1=num.map(x=>x>3);
+        console.log("sorting of num array is ${result1}");
+        //find sum of num arra
+        let sum=sum.reduce((total,n)=>total+n,0);
+        console.log("sum of num array is ${sum}");
+        //find mutliply of 2 of each element in num array
+        num.forEach(x=>console.log(x*2));
+
+        
+        
     </Script>
 </body>
 </html>
