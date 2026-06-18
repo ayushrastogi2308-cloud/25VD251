@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GRADE CALCULATOR</title>
+</head>
+<body>
+
+<h2>Student Result Calculator</h2>
+
+<input type="number" id="subjects" placeholder="Enter number of subjects">
+<button onclick="calculate()">Calculate Grade</button>
+
+<p id="result"></p>
+
+<script>
+function calculate() {
+    let subjects = Number(document.getElementById("subjects").value);
+    let total = 0;
+
+    for (let i = 0; i < subjects; i++) {
+        let marks = Number(prompt("Enter marks for subject " + (i + 1)));
+        total += marks;
+    }
+
+    let average = total / subjects;
+    let grade;
+
+    if (average >= 90) {
+        grade = "A+";
+    }
+    else if (average >= 80) {
+        grade = "A";
+    }
+    else if (average >= 70) {
+        grade = "B";
+    }
+    else if (average >= 60) {
+        grade = "C";
+    }
+    else if (average >= 40) {
+        grade = "D";
+    }
+    else {
+        grade = "F";
+    }
+
+    let status = (average >= 40) ? "Pass" : "Fail";
+
+    document.getElementById("result").innerHTML =
+        "Total Marks: " + total +
+        "<br>Average: " + average.toFixed(2) +
+        "<br>Grade: " + grade +
+        "<br>Status: " + status;
+}
+</script>
+
+</body>
+</html>
